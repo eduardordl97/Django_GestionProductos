@@ -1,0 +1,52 @@
+{% extends "ProyectowebApp/base.html" %}
+
+{% load static %}
+
+{% block content %}
+
+    {% for post in posts %}
+
+    <section class="page-section clearfix">
+        <div class="container">
+          <div class="intro">
+            <img class="intro-img img-fluid mb-3 mb-lg-0 rounded" src="{{post.imagen.url}}" alt="" style="width: 50%;"> 
+            <div class="intro-text left-0 text-center bg-faded p-5 rounded">
+              <h2 class="section-heading mb-4" >
+                <span class="section-heading-lower">{{post.titulo}}</span>
+                <span class="section-heading-uper">{{post.contenido}}</span>
+              </h2>
+              <div style="text-align: left;">
+              <h4>
+                <span class="section-heading-lower">Autor: {{post.autor}}</span>
+              </h4>
+            </div>
+              
+             
+            </div>
+          </div>
+        </div>
+    </section>
+
+        
+    {% endfor %}
+
+    <section>
+      <div class="categorias">
+        
+
+        Categoria:&nbsp;
+          {% for categoria in categorias %}  
+          {% if request.get_full_path == "/blog/categoria/1" and categoria.id == 1 %}   
+            {{categoria.nombre}}  
+          {% elif request.get_full_path == "/blog/categoria/2" and categoria.id == 2 %}   
+            {{categoria.nombre}}  
+          {% elif request.get_full_path == "/blog/categoria/3" and categoria.id == 3 %}   
+            {{categoria.nombre}} 
+          {% endif %}
+          
+          {% endfor %}
+      </div>
+    </section>
+
+    
+{% endblock %}

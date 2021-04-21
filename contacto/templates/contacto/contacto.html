@@ -1,0 +1,22 @@
+{% extends "ProyectowebApp/base.html" %}
+
+{% load static %}
+
+{% block content %}
+
+<div class="formulario">
+    
+    <form action="" method="POST">
+    {% csrf_token %}
+    <table>{{miFormulario.as_table}}</table>
+    <input type="submit" value="Enviar">
+
+    {% if "valido" in request.GET %}
+        <p>informacion enviada correctamente</p>
+    {% elif "novalido" in request.GET %}
+        <p>Los datos no fueron enviados</p>
+    {% endif %}
+    </form>
+</div>
+
+{% endblock %}
